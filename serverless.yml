@@ -1,0 +1,29 @@
+org: test
+app: word-to-pdf-lambda
+service: word-to-pdf-lambda
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 1536
+  apiGateway:
+    shouldStartNameWithService: true
+  stage: ${opt:stage, self:custom.defaultStage}
+  profile: ${opt:profile, self:custom.defaultProfile}
+  region: ${opt:region, self:custom.defaultRegion}
+
+custom:
+  defaultStage: dev
+  defaultProfile: default
+  defaultRegion: us-east-1
+
+functions:
+  convert:
+    handler: handler.convert
+    layers:
+      - arn:aws:lambda:us-east-1:764866452798:layer:libreoffice-brotli:1
+    timeout: 60
+    events:
+      - http:
+          path: /
+          method: post

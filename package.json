@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@shelf/aws-lambda-libreoffice": "^3.0.6"
+  }
+}

@@ -1,0 +1,15 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# enviroment
+.env
+
+# idea setting
+.idea
+
+# mac index file
+.DS_Store
